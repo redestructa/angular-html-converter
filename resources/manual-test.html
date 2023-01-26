@@ -1,0 +1,107 @@
+<html>
+<head>
+    <script>
+    </script>
+    <script src="../dist/hmCon.js"></script>
+    <script>
+
+        function convert() {
+            let convi = new hmCon.Converter();
+            let definitionLoader = new hmCon.DefinitionLoader();
+            document.querySelector('#output').value = convi.convertByDefinition(definitionLoader.load(document.querySelector('#yaml').value), document.querySelector('#input').value);
+            localStorage.setItem('input', document.querySelector('#input').value)
+            localStorage.setItem('yaml', document.querySelector('#yaml').value)
+        }
+
+    </script>
+    <style>
+
+        html, body {height: 100%;margin:0;padding:0}
+
+        #yaml-wrapper {
+            width: 50%;
+            height: 100%;
+            float:left;
+        }
+
+        #yaml {
+            width: 100%;
+            height: 100%;
+            float:left;
+        }
+
+        #in-out-wrapper {
+            width: 50%;
+            height: 50%;
+            float:right;
+        }
+
+        #input {
+            width: 100%;
+            height: 100%;
+        }
+
+        #output {
+            width: 100%;
+            height: 100%;
+        }
+
+        textarea {
+            color: #c5c5c5;
+            background-color: #232323;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body onclick="convert()">
+<div id="yaml-wrapper">
+    <textarea onclick="convert()" spellcheck="false" id="yaml" onkeyup="convert()">
+searchReplaceMaps:
+  - name: sr1
+    wholeWord: true
+    ignoreCase: true
+    replacements:
+      - search: test
+        replace: TEST
+
+conversions:
+  - name: any-unique-conversion-name
+    element:
+      selector: h1
+      rename: div
+      wrapIn:
+        name: new-wrapping-element
+        attrs:
+          - name: data-child-text-content
+            value: "${aVar.textContent}"
+            searchReplaceMap: sr1
+      addClass:
+        - converted
+        - was-h1-before
+      removeClass:
+        - kasandra
+      targetVar: aVar
+      removeChildElements: true
+</textarea>
+</div>
+<div id="in-out-wrapper">
+    <textarea onclick="convert()" spellcheck="false" id="input" onkeyup="convert()">
+<h1 class="wurst kasandra">das ist ein test</h1>
+
+        </textarea>
+    <textarea onclick="convert()" spellcheck="false" id="output" onkeyup="convert()"></textarea>
+</div>
+<div style="clear: both"></div>
+
+<script>
+    if (localStorage.getItem('input')) {
+        document.querySelector('#input').value = localStorage.getItem('input')
+    }
+    if (localStorage.getItem('yaml')) {
+        document.querySelector('#yaml').value = localStorage.getItem('yaml')
+    }
+    convert();
+</script>
+</body>
+</html>

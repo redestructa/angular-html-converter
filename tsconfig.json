@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "CommonJS",
+    "strict": true,
+    "moduleResolution": "Node",
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "sourceRoot": "./src",
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
+    "skipLibCheck": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "lib": [
+      "es2020"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "rootDir": "./src",
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "importHelpers": true,
+    "allowJs": false
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

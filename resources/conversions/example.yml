@@ -1,0 +1,35 @@
+# You can try this live by starting the manual-test.html file, 
+# but first: execute webpack in the src folder. 
+# Running the node converter is destructive! as long as 
+# you do not set editMode to false, then it will rely on copies. 
+# Meaning you shouldn't edit your template files while editing 
+# by the converter and definition yaml files, which can also 
+# be done in live by the watcher in main.ts
+
+searchReplaceMaps:
+  - name: sr1
+    wholeWord: true
+    ignoreCase: true
+    replacements:
+      - search: test
+        replace: TEST
+
+conversions:
+  - name: any-unique-conversion-name
+    element:
+      selector: h1
+      rename: div
+      wrapIn:
+        name: new-wrapping-element
+        attrs:
+          - name: data-child-text-content
+            value: "${aVar.textContent}"
+            searchReplaceMap: sr1
+      addClass:
+        - converted
+        - was-h1-before
+      removeClass:
+        - kasandra
+      targetVar: aVar
+      removeChildElements: true
+      

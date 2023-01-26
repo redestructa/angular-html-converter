@@ -1,0 +1,209 @@
+{
+  "$schema": "angular-template-element-conversion-definition.json",
+  "properties": {
+    "searchReplaceMaps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SearchReplaceMap"
+      }
+    },
+    "conversions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Conversion"
+      }
+    },
+    "required": [
+      "conversions"
+    ]
+  },
+  "definitions": {
+    "Conversion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "element": {
+          "$ref": "#/definitions/Element"
+        }
+      },
+      "required": [
+        "element",
+        "name"
+      ],
+      "title": "Conversion"
+    },
+    "Element": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "selector": {
+          "type": "string"
+        },
+        "removeClass": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addClass": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mustHaveClasses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rename": {
+          "type": "string"
+        },
+        "unwrap": {
+          "type": "boolean"
+        },
+        "mergeAttrsWhenUnwrap": {
+          "type": "boolean"
+        },
+        "wrapIn": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "attrs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ElementAttr"
+              }
+            }
+          },
+          "required": [
+            "name"
+          ]
+        },
+        "childElementDescriptionsMustMatch": {
+          "type": "boolean"
+        },
+        "targetVar": {
+          "type": "string"
+        },
+        "remove": {
+          "type": "boolean"
+        },
+        "innerHtml": {
+          "type": "string"
+        },
+        "flattenDeepText": {
+          "type": "boolean"
+        },
+        "removeChildElements": {
+          "type": "boolean"
+        },
+        "attrs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ElementAttr"
+          }
+        },
+        "strictChildMatch": {
+          "type": "boolean"
+        },
+        "childElements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Element"
+          }
+        },
+        "copyAttrs": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "selector"
+      ],
+      "title": "Element"
+    },
+    "ElementAttr": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "searchReplaceMap": {
+          "type": "string"
+        },
+        "remove": {
+          "type": "boolean"
+        },
+        "rename": {
+          "type": "string"
+        },
+        "inheritAngularBindingType": {
+          "type": "boolean"
+        },
+        "targetVar": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "ElementAttr"
+    },
+    "SearchReplaceMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "wholeWord": {
+          "type": "boolean"
+        },
+        "ignoreCase": {
+          "type": "boolean"
+        },
+        "replacements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Replacement"
+          }
+        }
+      },
+      "required": [
+        "ignoreCase",
+        "name",
+        "replacements",
+        "wholeWord"
+      ],
+      "title": "SearchReplaceMap"
+    },
+    "Replacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "search": {
+          "type": "string"
+        },
+        "replace": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "replace",
+        "search"
+      ],
+      "title": "Replacement"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+verbose: false
+analyze: true
+angularTemplateFolder: '<full-path-to-template-files>'
+editMode: true
